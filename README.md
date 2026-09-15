@@ -10,7 +10,26 @@ Designed for maximum legibility, high contrast (> 15:1 WCAG AAA), and tactile cr
 
 ---
 
-## ✨ Features
+## 📸 Screenshots & Visual Tour
+
+### 1. 📊 KPI Stat Cards & Demarcated Section Cards
+![KPI Stat Cards & Demarcated Section Cards](screenshots/01-kpi-and-section-cards.png)
+
+### 2. 📑 High-Contrast Tables & Project Milestones (Dark Mode)
+![Dark Mode Table & Milestones](screenshots/02-dark-mode-table-and-milestones.png)
+
+### 3. 🗓️ Habit Tracker Tables & Developer Index Cards
+![Habit Tracker & Code Card](screenshots/03-habit-tracker-and-code-card.png)
+
+### 4. 🗂️ Project Properties & Stationery Cards
+![Project Properties & Command Card](screenshots/04-project-properties-and-command.png)
+
+### 5. 🖍️ Pastel Headings, Chisel Markers & Doodle Checkboxes
+![Headings, Highlighters & Checkboxes](screenshots/05-headings-highlighters-checkboxes.png)
+
+---
+
+## ✨ Key Features
 
 ### 1. 🎨 Two Switchable Aesthetic Modes
 Switch seamlessly in **Settings → Style Settings → Style & Mode**:
@@ -61,7 +80,7 @@ Switch seamlessly in **Settings → Style Settings → Style & Mode**:
 
 ## 🚀 Installation
 
-### Option 1: Community Themes (Recommended once published)
+### Option 1: Community Themes (Recommended once approved)
 1. Open Obsidian **Settings** (`Cmd + ,` or `Ctrl + ,`).
 2. Navigate to **Appearance → Themes → Manage**.
 3. Search for **Synkk Sketch Book** and click **Install and use**.
