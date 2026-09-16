@@ -1221,7 +1221,6 @@ body .markdown-rendered table tr:last-child td {
 mark,
 .cm-highlight {
   color: inherit;
-  -webkit-
 }
 
 body:not([class*="hl-"]) mark,
