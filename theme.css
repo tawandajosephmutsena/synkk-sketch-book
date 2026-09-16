@@ -340,6 +340,19 @@ settings:
   --h5-color: var(--sketch-h5-color);
   --h6-color: var(--sketch-h6-color);
 
+  /* Dividers & Resize Handles */
+  --divider-color: var(--sketch-border);
+  --divider-color-hover: var(--sketch-accent);
+  --divider-width: 2px;
+  --divider-width-hover: 8px;
+  --divider-vertical-height: 100%;
+
+  /* Search & Inputs */
+  --search-icon-color: var(--sketch-ink-muted);
+  --search-clear-button-color: var(--sketch-ink-muted);
+  --search-icon-size: 16px;
+  --input-height: 32px;
+
   /* Omnicore Interop */
   --oc-bg-card: var(--sketch-bg-card);
   --oc-bg-header: var(--sketch-bg-paper-alt);
@@ -433,6 +446,19 @@ settings:
   --h4-color: var(--sketch-h4-color);
   --h5-color: var(--sketch-h5-color);
   --h6-color: var(--sketch-h6-color);
+
+  /* Dividers & Resize Handles */
+  --divider-color: var(--sketch-border);
+  --divider-color-hover: var(--sketch-accent);
+  --divider-width: 2px;
+  --divider-width-hover: 8px;
+  --divider-vertical-height: 100%;
+
+  /* Search & Inputs */
+  --search-icon-color: var(--sketch-ink-muted);
+  --search-clear-button-color: var(--sketch-ink-muted);
+  --search-icon-size: 16px;
+  --input-height: 32px;
 
   /* Omnicore Interop */
   --oc-bg-card: var(--sketch-bg-card);
@@ -730,10 +756,9 @@ body.sketch-mode-handwritten .cm-content {
   color: var(--sketch-ink-main);
 }
 
+/* Reading View Heading 1 */
 body:not(.sketch-mode-clean) .markdown-rendered h1,
-body.sketch-mode-handwritten .markdown-rendered h1,
-body:not(.sketch-mode-clean) .HyperMD-header-1,
-body.sketch-mode-handwritten .HyperMD-header-1 {
+body.sketch-mode-handwritten .markdown-rendered h1 {
   font-family: var(--sketch-font-heading-sketch) !important;
   font-size: 2.1em;
   font-weight: 700;
@@ -749,10 +774,25 @@ body.sketch-mode-handwritten .HyperMD-header-1 {
   transform: rotate(-0.5deg);
 }
 
+/* Live Preview Heading 1 (Stable block layout prevents CodeMirror cursor jumping) */
+body:not(.sketch-mode-clean) .cm-line.HyperMD-header-1,
+body.sketch-mode-handwritten .cm-line.HyperMD-header-1 {
+  font-family: var(--sketch-font-heading-sketch) !important;
+  font-size: 2.1em !important;
+  font-weight: 700 !important;
+  color: var(--sketch-h1-color) !important;
+  display: block !important;
+  transform: none !important;
+  border-left: 4px solid var(--sketch-accent) !important;
+  background: var(--sketch-accent-tint) !important;
+  padding: 6px 14px !important;
+  border-radius: var(--sketch-radius-sm) !important;
+  margin: 0.8em 0 0.4em 0 !important;
+}
+
+/* Reading View Heading 2 */
 body:not(.sketch-mode-clean) .markdown-rendered h2,
-body.sketch-mode-handwritten .markdown-rendered h2,
-body:not(.sketch-mode-clean) .HyperMD-header-2,
-body.sketch-mode-handwritten .HyperMD-header-2 {
+body.sketch-mode-handwritten .markdown-rendered h2 {
   font-family: var(--sketch-font-heading-sketch) !important;
   font-size: 1.65em;
   font-weight: 700;
@@ -763,6 +803,20 @@ body.sketch-mode-handwritten .HyperMD-header-2 {
   display: table;
 }
 
+/* Live Preview Heading 2 */
+body:not(.sketch-mode-clean) .cm-line.HyperMD-header-2,
+body.sketch-mode-handwritten .cm-line.HyperMD-header-2 {
+  font-family: var(--sketch-font-heading-sketch) !important;
+  font-size: 1.65em !important;
+  font-weight: 700 !important;
+  color: var(--sketch-h2-color) !important;
+  display: block !important;
+  border-bottom: 2.5px dashed var(--sketch-accent) !important;
+  padding-bottom: 4px !important;
+  margin: 0.8em 0 0.4em 0 !important;
+}
+
+/* Headings 3 */
 body:not(.sketch-mode-clean) .markdown-rendered h3,
 body.sketch-mode-handwritten .markdown-rendered h3,
 body:not(.sketch-mode-clean) .HyperMD-header-3,
@@ -834,7 +888,7 @@ body.sketch-mode-clean .HyperMD-header-2 {
   box-shadow: var(--sketch-shadow-card) !important;
   position: relative !important;
   margin: 1.6em 0 !important;
-  padding: 18px 20px !important;
+  padding: 18px 22px !important;
   transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease;
   overflow: visible !important;
 }
@@ -895,6 +949,14 @@ body.sketch-mode-clean .callout::before {
   box-shadow: 1px 1px 0px rgba(0,0,0,0.06);
 }
 
+.callout-icon::after {
+  display: none !important;
+}
+
+.callout-content {
+  padding: 4px 0 0 2px !important;
+}
+
 /* Callout Types */
 .callout[data-callout="note"],
 .callout[data-callout="info"] {
@@ -946,7 +1008,7 @@ body.sketch-mode-clean .callout::before {
   border: 1.8px solid var(--sketch-border-strong) !important;
   border-top: 4px solid var(--sketch-accent) !important;
   border-radius: var(--sketch-active-radius-card) !important;
-  padding: 16px 18px !important;
+  padding: 20px 22px !important;
   box-shadow: var(--sketch-shadow-card) !important;
   position: relative;
   transition: all 0.18s ease;
@@ -1051,18 +1113,20 @@ body:not(.sketch-mode-clean):not(.sketch-washi-tape-false) .image-embed::before 
   background-color: var(--sketch-accent-tint) !important;
   color: var(--sketch-accent-text) !important;
   font-weight: 700 !important;
-  padding: 12px 16px !important;
+  padding: 13px 18px !important;
   border-bottom: 2px solid var(--sketch-accent-border) !important;
   text-align: left !important;
   font-size: 0.94em !important;
+  vertical-align: middle !important;
 }
 
 .theme-light .markdown-rendered table td,
 .theme-light .table-view-tbody td {
-  padding: 11px 16px !important;
+  padding: 12px 18px !important;
   border-bottom: 1px solid var(--sketch-border) !important;
   background-color: #ffffff !important;
   color: #1d1a18 !important;
+  vertical-align: middle !important;
 }
 
 .theme-light .markdown-rendered table tr:nth-child(even) td,
@@ -1099,19 +1163,21 @@ body:not(.sketch-mode-clean):not(.sketch-washi-tape-false) .image-embed::before 
   background-color: rgba(var(--sketch-accent-rgb), 0.18) !important;
   color: var(--sketch-accent-text) !important;
   font-weight: 700 !important;
-  padding: 12px 16px !important;
+  padding: 13px 18px !important;
   border-bottom: 2px solid rgba(var(--sketch-accent-rgb), 0.4) !important;
   text-align: left !important;
   font-size: 0.94em !important;
+  vertical-align: middle !important;
 }
 
 /* Odd Rows in Dark Mode */
 .theme-dark .markdown-rendered table td,
 .theme-dark .table-view-tbody td {
-  padding: 11px 16px !important;
+  padding: 12px 18px !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   background-color: #1e2129 !important;
   color: #f5f4ef !important; /* Chalk white text */
+  vertical-align: middle !important;
 }
 
 /* Even Rows in Dark Mode: Subtle Dark Slate (NEVER LIGHT OR WHITE!) */
@@ -1205,10 +1271,11 @@ body.hl-clean .cm-highlight {
 ============================================================================= */
 
 .task-list-item {
-  padding-left: 6px;
+  padding-left: 4px;
   margin: 6px 0;
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
 }
 
 body:not(.sketch-mode-clean) input[type="checkbox"],
@@ -1219,13 +1286,14 @@ body.sketch-mode-handwritten .task-list-item-checkbox {
   -webkit-appearance: none !important;
   width: 19px !important;
   height: 19px !important;
+  min-width: 19px !important;
   border: 2px solid var(--sketch-accent) !important;
   border-radius: 4px 8px 3px 7px/7px 4px 8px 3px !important;
   background-color: var(--sketch-bg-card) !important;
   cursor: pointer !important;
   position: relative !important;
   vertical-align: middle !important;
-  margin-right: 10px !important;
+  margin: 3px 0 0 0 !important;
   transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease !important;
   box-shadow: 2px 2px 0px rgba(0,0,0,0.08) !important;
 }
@@ -1253,13 +1321,13 @@ body:not(.sketch-mode-clean) .task-list-item-checkbox:checked::after,
 body.sketch-mode-handwritten .task-list-item-checkbox:checked::after {
   content: "✓" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: 2px !important;
-  font-size: 17px !important;
-  font-weight: 800 !important;
-  color: var(--sketch-accent) !important;
-  font-family: var(--sketch-font-body-sketch) !important;
-  transform: rotate(-6deg) !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: var(--sketch-accent-text) !important;
+  font-weight: 900 !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
 }
 
 body:not(.sketch-mode-clean) .task-list-item.is-checked,
@@ -1271,18 +1339,34 @@ body.sketch-mode-handwritten .task-list-item.is-checked {
 }
 
 /* Clean Mode Checkboxes */
+body.sketch-mode-clean .task-list-item {
+  padding-left: 4px;
+  margin: 6px 0;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+
 body.sketch-mode-clean input[type="checkbox"],
 body.sketch-mode-clean .task-list-item-checkbox {
   appearance: none !important;
   -webkit-appearance: none !important;
-  width: 17px !important;
-  height: 17px !important;
-  border: 1.8px solid var(--sketch-border-strong) !important;
-  border-radius: 5px !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  border: 1.5px solid var(--sketch-border-strong) !important;
+  border-radius: var(--clean-radius-sm) !important;
   background-color: var(--sketch-bg-card) !important;
   cursor: pointer !important;
-  margin-right: 10px !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  margin: 3px 0 0 0 !important;
   transition: all 0.15s ease !important;
+}
+
+body.sketch-mode-clean input[type="checkbox"]:hover,
+body.sketch-mode-clean .task-list-item-checkbox:hover {
+  border-color: var(--sketch-accent) !important;
 }
 
 body.sketch-mode-clean input[type="checkbox"]:checked,
@@ -1314,7 +1398,7 @@ pre[class*="language-"],
   border: 1.8px solid var(--sketch-border-strong) !important;
   border-radius: var(--sketch-active-radius-card) !important;
   box-shadow: var(--sketch-shadow-card) !important;
-  padding: 34px 20px 18px 20px !important;
+  padding: 38px 22px 18px 22px !important;
   margin: 1.6em 0 !important;
   position: relative !important;
 }
@@ -1323,8 +1407,8 @@ pre[class*="language-"]::before,
 .markdown-rendered pre::before {
   content: "" !important;
   position: absolute !important;
-  top: 12px !important;
-  left: 16px !important;
+  top: 14px !important;
+  left: 18px !important;
   width: 10px !important;
   height: 10px !important;
   border-radius: 50% !important;
@@ -1435,6 +1519,21 @@ hr {
   margin: 2.2em 0 !important;
 }
 
+/* =============================================================================
+   14. BLOCKQUOTES & MARGIN HIGHLIGHTS
+============================================================================= */
+
+blockquote,
+.markdown-rendered blockquote {
+  border-left: 3.5px solid var(--sketch-accent) !important;
+  background-color: var(--sketch-bg-subtle) !important;
+  border-radius: 0 var(--sketch-active-radius-sm) var(--sketch-active-radius-sm) 0 !important;
+  padding: 12px 18px !important;
+  margin: 1.4em 0 !important;
+  color: var(--sketch-ink-muted) !important;
+  font-style: italic !important;
+}
+
 body:not(.sketch-mode-clean) hr,
 body.sketch-mode-handwritten hr {
   height: 3px !important;
@@ -1474,6 +1573,7 @@ body.sketch-mode-clean hr {
 .nav-file-title {
   border-radius: 6px !important;
   margin: 2px 4px !important;
+  padding: 4px 8px !important;
   transition: all 0.12s ease !important;
   font-family: inherit !important;
 }
@@ -1489,36 +1589,113 @@ body.sketch-mode-clean hr {
   background-color: var(--sketch-bg-subtle) !important;
 }
 
-input[type="text"],
-input[type="search"],
-.search-input-container input {
+/* General Text Inputs */
+input[type="text"]:not(.search-input-container input),
+input[type="search"]:not(.search-input-container input),
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea {
   background-color: var(--sketch-bg-card) !important;
   border: 1.8px solid var(--sketch-border-strong) !important;
-  padding: 8px 14px !important;
+  padding: 6px 12px !important;
   color: var(--sketch-ink-main) !important;
   border-radius: var(--sketch-active-radius-sm) !important;
   box-shadow: var(--sketch-shadow-sm) !important;
-  transition: border-color 0.15s ease !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
 }
 
 input[type="text"]:focus,
-input[type="search"]:focus {
+input[type="search"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
   border-color: var(--sketch-accent) !important;
   box-shadow: 0 0 0 3px var(--sketch-accent-tint) !important;
+  outline: none !important;
 }
 
-button,
+/* Precise Search Bar & Magnifying Glass Icon Alignment */
+.search-input-container {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.search-input-container:before {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  inset-inline-start: 10px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background-color: var(--sketch-ink-muted) !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+
+.search-input-container input {
+  background-color: var(--sketch-bg-card) !important;
+  border: 1.8px solid var(--sketch-border-strong) !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  line-height: 32px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-inline-start: 34px !important;
+  padding-inline-end: 28px !important;
+  color: var(--sketch-ink-main) !important;
+  border-radius: var(--sketch-active-radius-sm) !important;
+  box-shadow: var(--sketch-shadow-sm) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+  box-sizing: border-box !important;
+}
+
+.search-input-container input:focus {
+  border-color: var(--sketch-accent) !important;
+  box-shadow: 0 0 0 3px var(--sketch-accent-tint) !important;
+  outline: none !important;
+}
+
+.search-input-clear-button {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  height: 22px !important;
+  width: 22px !important;
+  inset-inline-end: 6px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--sketch-ink-muted) !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+}
+
+.search-input-clear-button:hover {
+  background-color: var(--sketch-bg-subtle) !important;
+  color: var(--sketch-accent) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Scoped Buttons (Avoid clobbering icon buttons, tab close buttons, and toolbars) */
+button:not(.clickable-icon):not(.search-input-clear-button):not(.workspace-tab-header-inner-close-button),
 .mod-cta {
   font-family: inherit !important;
   border: 1.8px solid var(--sketch-border-strong) !important;
   border-radius: var(--sketch-active-radius-sm) !important;
-  padding: 7px 18px !important;
+  padding: 6px 16px !important;
   cursor: pointer !important;
   box-shadow: var(--sketch-shadow-sm) !important;
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-button:hover {
+button:not(.clickable-icon):not(.search-input-clear-button):not(.workspace-tab-header-inner-close-button):hover {
   transform: translateY(-1px) !important;
   box-shadow: var(--sketch-shadow-card) !important;
 }
@@ -1546,6 +1723,73 @@ button.mod-cta:hover {
   border-top: 1.5px solid var(--sketch-border) !important;
   font-size: 0.84em !important;
   color: var(--sketch-ink-muted) !important;
+}
+
+/* =============================================================================
+   16. WORKSPACE SPLIT DIVIDERS & SIDEBAR DRAG-TO-RESIZE HANDLERS
+============================================================================= */
+
+/* Master resize handle rule */
+.workspace-leaf-resize-handle {
+  position: absolute !important;
+  z-index: 35 !important;
+  pointer-events: auto !important;
+  background-color: transparent !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease !important;
+}
+
+/* Left Sidebar (between file navigation / left dock and editor) */
+.workspace-split.mod-left-split > .workspace-leaf-resize-handle {
+  width: 8px !important;
+  right: -4px !important;
+  height: 100% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  cursor: col-resize !important;
+  pointer-events: auto !important;
+  z-index: 40 !important;
+  border-right: 2px solid var(--sketch-border) !important;
+}
+
+/* Right Sidebar (between editor and right dock) */
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+  width: 8px !important;
+  left: -4px !important;
+  height: 100% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  cursor: col-resize !important;
+  pointer-events: auto !important;
+  z-index: 40 !important;
+  border-left: 2px solid var(--sketch-border) !important;
+}
+
+/* Vertical note splits (side-by-side note panes) */
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
+  width: 8px !important;
+  right: -4px !important;
+  cursor: col-resize !important;
+  pointer-events: auto !important;
+  z-index: 35 !important;
+  border-right: 2px solid var(--sketch-border) !important;
+}
+
+/* Horizontal note splits (stacked top and bottom panes) */
+.workspace-split.mod-horizontal > * > .workspace-leaf-resize-handle {
+  height: 8px !important;
+  bottom: -4px !important;
+  cursor: row-resize !important;
+  pointer-events: auto !important;
+  z-index: 35 !important;
+  border-bottom: 2px solid var(--sketch-border) !important;
+}
+
+/* Dragging hover and active feedback */
+.workspace-leaf-resize-handle:hover,
+.workspace-leaf-resize-handle.is-active {
+  background-color: var(--sketch-accent) !important;
+  border-color: var(--sketch-accent) !important;
+  opacity: 0.9 !important;
 }
 
 ::-webkit-scrollbar {
