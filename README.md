@@ -2,7 +2,7 @@
 
 [![Obsidian Theme](https://img.shields.io/badge/Obsidian-Theme-7c3aed?logo=obsidian&logoColor=white)](https://obsidian.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/tawandajosephmutsena/synkk-sketch-book/releases)
+[![Version](https://img.shields.io/badge/version-1.0.4-blue.svg)](https://github.com/tawandajosephmutsena/synkk-sketch-book/releases)
 
 A tactile, aesthetic pastel sketchbook theme for **[Obsidian](https://obsidian.md)** featuring **deep paper textures**, an **off-white stained background**, **rich Japanese stationery pastel palettes**, **fun visual cards**, and switchable **Handwritten Sketch** vs **Clean & Professional** modes.
 

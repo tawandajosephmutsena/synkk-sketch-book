@@ -1275,10 +1275,12 @@ body.hl-clean .cm-highlight {
   gap: 8px;
 }
 
-body:not(.sketch-mode-clean) input[type="checkbox"],
-body.sketch-mode-handwritten input[type="checkbox"],
+body:not(.sketch-mode-clean) .task-list-item input[type="checkbox"],
 body:not(.sketch-mode-clean) .task-list-item-checkbox,
-body.sketch-mode-handwritten .task-list-item-checkbox {
+body:not(.sketch-mode-clean) .markdown-rendered input[type="checkbox"]:not(.checkbox-container input),
+body.sketch-mode-handwritten .task-list-item input[type="checkbox"],
+body.sketch-mode-handwritten .task-list-item-checkbox,
+body.sketch-mode-handwritten .markdown-rendered input[type="checkbox"]:not(.checkbox-container input) {
   appearance: none;
   -webkit-appearance: none;
   width: 19px;
@@ -1295,27 +1297,33 @@ body.sketch-mode-handwritten .task-list-item-checkbox {
   box-shadow: 2px 2px 0px rgba(0,0,0,0.08);
 }
 
-body:not(.sketch-mode-clean) input[type="checkbox"]:hover,
-body.sketch-mode-handwritten input[type="checkbox"]:hover,
+body:not(.sketch-mode-clean) .task-list-item input[type="checkbox"]:hover,
 body:not(.sketch-mode-clean) .task-list-item-checkbox:hover,
-body.sketch-mode-handwritten .task-list-item-checkbox:hover {
+body:not(.sketch-mode-clean) .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):hover,
+body.sketch-mode-handwritten .task-list-item input[type="checkbox"]:hover,
+body.sketch-mode-handwritten .task-list-item-checkbox:hover,
+body.sketch-mode-handwritten .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):hover {
   transform: scale(1.18) rotate(-4deg);
   border-color: var(--sketch-accent-hover);
 }
 
-body:not(.sketch-mode-clean) input[type="checkbox"]:checked,
-body.sketch-mode-handwritten input[type="checkbox"]:checked,
+body:not(.sketch-mode-clean) .task-list-item input[type="checkbox"]:checked,
 body:not(.sketch-mode-clean) .task-list-item-checkbox:checked,
-body.sketch-mode-handwritten .task-list-item-checkbox:checked {
+body:not(.sketch-mode-clean) .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):checked,
+body.sketch-mode-handwritten .task-list-item input[type="checkbox"]:checked,
+body.sketch-mode-handwritten .task-list-item-checkbox:checked,
+body.sketch-mode-handwritten .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):checked {
   background-color: var(--sketch-accent-tint);
   border-color: var(--sketch-accent);
   transform: scale(1.05) rotate(2deg);
 }
 
-body:not(.sketch-mode-clean) input[type="checkbox"]:checked::after,
-body.sketch-mode-handwritten input[type="checkbox"]:checked::after,
+body:not(.sketch-mode-clean) .task-list-item input[type="checkbox"]:checked::after,
 body:not(.sketch-mode-clean) .task-list-item-checkbox:checked::after,
-body.sketch-mode-handwritten .task-list-item-checkbox:checked::after {
+body:not(.sketch-mode-clean) .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):checked::after,
+body.sketch-mode-handwritten .task-list-item input[type="checkbox"]:checked::after,
+body.sketch-mode-handwritten .task-list-item-checkbox:checked::after,
+body.sketch-mode-handwritten .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):checked::after {
   content: "✓";
   position: absolute;
   top: 50%;
@@ -1343,8 +1351,9 @@ body.sketch-mode-clean .task-list-item {
   gap: 8px;
 }
 
-body.sketch-mode-clean input[type="checkbox"],
-body.sketch-mode-clean .task-list-item-checkbox {
+body.sketch-mode-clean .task-list-item input[type="checkbox"],
+body.sketch-mode-clean .task-list-item-checkbox,
+body.sketch-mode-clean .markdown-rendered input[type="checkbox"]:not(.checkbox-container input) {
   appearance: none;
   -webkit-appearance: none;
   width: 18px;
@@ -1360,19 +1369,22 @@ body.sketch-mode-clean .task-list-item-checkbox {
   transition: all 0.15s ease;
 }
 
-body.sketch-mode-clean input[type="checkbox"]:hover,
-body.sketch-mode-clean .task-list-item-checkbox:hover {
+body.sketch-mode-clean .task-list-item input[type="checkbox"]:hover,
+body.sketch-mode-clean .task-list-item-checkbox:hover,
+body.sketch-mode-clean .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):hover {
   border-color: var(--sketch-accent);
 }
 
-body.sketch-mode-clean input[type="checkbox"]:checked,
-body.sketch-mode-clean .task-list-item-checkbox:checked {
+body.sketch-mode-clean .task-list-item input[type="checkbox"]:checked,
+body.sketch-mode-clean .task-list-item-checkbox:checked,
+body.sketch-mode-clean .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):checked {
   background-color: var(--sketch-accent);
   border-color: var(--sketch-accent);
 }
 
-body.sketch-mode-clean input[type="checkbox"]:checked::after,
-body.sketch-mode-clean .task-list-item-checkbox:checked::after {
+body.sketch-mode-clean .task-list-item input[type="checkbox"]:checked::after,
+body.sketch-mode-clean .task-list-item-checkbox:checked::after,
+body.sketch-mode-clean .markdown-rendered input[type="checkbox"]:not(.checkbox-container input):checked::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -1802,3 +1814,63 @@ body .workspace-leaf-resize-handle.is-active {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--sketch-accent);
 }
+
+/* =============================================================================
+   17. SETTINGS TOGGLE SWITCHES (.checkbox-container)
+============================================================================= */
+
+/* Toggle track reset and layout */
+body .checkbox-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+/* Ensure toggle internal input stays fully hidden and out-of-flow with zero dimension leakage */
+body .checkbox-container input[type="checkbox"],
+body.sketch-mode-handwritten .checkbox-container input[type="checkbox"],
+body.sketch-mode-clean .checkbox-container input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  z-index: 1;
+}
+
+/* Ensure no pseudo-element checkmark or glyph renders on the toggle input */
+body .checkbox-container input[type="checkbox"]::after,
+body .checkbox-container input[type="checkbox"]:checked::after {
+  content: none;
+  display: none;
+}
+
+/* Ensure toggle thumb (:after) is strictly anchored to top: 0 with zero vertical drift */
+body .checkbox-container:after,
+body.sketch-mode-handwritten .checkbox-container:after,
+body.sketch-mode-clean .checkbox-container:after {
+  top: 0;
+  bottom: auto;
+  pointer-events: none;
+}
+
+body .modal .checkbox-container:after {
+  top: 0;
+  bottom: auto;
+}
+
