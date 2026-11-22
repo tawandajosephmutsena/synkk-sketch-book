@@ -1069,6 +1069,27 @@ body:not(.sketch-mode-clean) .markdown-rendered img:not(.emoji):hover {
   box-shadow: var(--sketch-shadow-card-hover);
 }
 
+/* Local wiki embeds wrap their image in .image-embed. Keep the frame on the
+   wrapper so the child image does not get a second polaroid frame. */
+body:not(.sketch-mode-clean) .image-embed img:not(.emoji) {
+  background: transparent;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+body:not(.sketch-mode-clean) .markdown-rendered .image-embed img:not(.emoji):hover {
+  box-shadow: none;
+  transform: none;
+}
+
 body:not(.sketch-mode-clean):not(.sketch-washi-tape-false) .image-embed::before {
   content: "";
   position: absolute;
@@ -1582,7 +1603,7 @@ body .nav-file-title {
   border-radius: 6px;
   margin: 2px 4px;
   padding: 4px 8px;
-  transition: all 0.12s ease;
+  transition: background-color 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
   font-family: inherit;
 }
 
